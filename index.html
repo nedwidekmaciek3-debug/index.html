@@ -28,39 +28,28 @@ body {
     z-index: 10;
 }
 
-h1 { color: #ff4d6d; }
-
-textarea {
-    width: 100%;
-    height: 80px;
-    margin-top: 15px;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    resize: none;
-}
+h1 { color: #ff4d6d; margin-bottom: 25px; }
 
 .buttons {
-    margin-top: 30px;
-    position: relative;
-    height: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* odstęp między przyciskami */
+    align-items: center;
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 10px 30px;
+    font-size: 18px;
     border-radius: 20px;
     border: none;
     cursor: pointer;
-    position: absolute;
+    width: 150px;
+    position: relative;
 }
 
 .yes {
     background-color: #ff4d6d;
     color: white;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
 }
 
 .no {
@@ -68,8 +57,8 @@ button {
 }
 
 #answer {
-    margin-top: 20px;
-    font-size: 20px;
+    margin-top: 25px;
+    font-size: 22px;
     color: #ff4d6d;
     display: none;
 }
@@ -103,11 +92,12 @@ button {
 
 <div class="card">
     <h1>Czy zostaniesz moją walentynką? 💘</h1>
-    <textarea placeholder="Napisz coś od serca..."></textarea>
+
     <div class="buttons">
         <button class="yes" onclick="sayYes()">TAK 💖</button>
         <button class="no" id="noBtn">NIE 😢</button>
     </div>
+
     <div id="answer"></div>
 </div>
 
@@ -121,6 +111,7 @@ noBtn.addEventListener("touchstart", moveNo);
 function moveNo() {
     const x = Math.random() * (window.innerWidth - 100);
     const y = Math.random() * (window.innerHeight - 100);
+    noBtn.style.position = "absolute";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
